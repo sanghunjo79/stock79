@@ -21,7 +21,11 @@
   }
 
   .glass-card-hover {
-    @apply transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/95 hover:shadow-glow-indigo;
+    @apply transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/95 hover:shadow-2xl hover:-translate-y-0.5;
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.3);
   }
 
   .glass-input {
