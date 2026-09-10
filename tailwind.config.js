@@ -8,21 +8,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 토스/핀테크 감성의 프리미엄 블루 컬러 시스템
         brand: {
-          50: '#f0f7ff',
-          100: '#e0effe',
-          200: '#b9dffe',
-          300: '#7cc2fd',
-          400: '#38a2fa',
-          500: '#3182f6', // 토스 시그니처 블루 (Toss Signature Blue)
-          600: '#1b64da',
-          700: '#144eb0',
-          800: '#144291',
-          900: '#163973',
-          950: '#0e2348',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#312e81',
+          950: '#1e1b4b',
         },
-        // 라이트 테마를 위한 고급 슬레이트 & 쿨 그레이 팔레트
         slate: {
           850: '#151f32',
           900: '#0f172a',
@@ -33,9 +31,8 @@ export default {
         sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif'],
       },
       boxShadow: {
-        'card': '0 2px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
-        'card-hover': '0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03)',
-        'glow-blue': '0 0 20px -3px rgba(49, 130, 246, 0.35)',
+        'glow-indigo': '0 0 25px -5px rgba(99, 102, 241, 0.3)',
+        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.3)',
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

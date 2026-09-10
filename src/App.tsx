@@ -1,6 +1,6 @@
 /**
  * [메인 애플리케이션 컴포넌트]
- * 토스/핀테크 스타일의 밝고 선명한 화이트 & 블루 라이트 테마 대시보드입니다.
+ * 프리미엄 핀테크 다크 테마 대시보드입니다.
  * 주식 가계부와 포트폴리오 대시보드, Gemini AI 상담 챗봇을 통합 관리합니다.
  */
 
@@ -35,19 +35,19 @@ import { ApiKeyModal } from './components/ApiKeyModal';
 import { AiAdvisorDrawer } from './components/AiAdvisorDrawer';
 
 export const App: React.FC = () => {
-  // 1. 핵심 상태 관리 (Core States)
+  // 1. 핵심 상태 관리
   const [records, setRecords] = useState<StockRecord[]>([]);
   const [selectedCurrency, setSelectedCurrency] = useState<Currency | 'ALL'>('ALL');
   const [geminiConfig, setGeminiConfig] = useState<GeminiConfig>({ apiKey: '', modelName: 'gemini-3-flash-preview' });
 
-  // 2. 모달 및 드로어 상태 (Modal & Drawer States)
+  // 2. 모달 및 드로어 상태
   const [isRecordModalOpen, setIsRecordModalOpen] = useState(false);
   const [editingRecord, setEditingRecord] = useState<StockRecord | null>(null);
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
   const [isAiDrawerOpen, setIsAiDrawerOpen] = useState(false);
   const [aiInitialQuestion, setAiInitialQuestion] = useState<string | undefined>(undefined);
 
-  // 3. 토스트 알림 메시지 상태 (Toast Notification State)
+  // 3. 토스트 알림 메시지 상태
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'info' } | null>(null);
 
   // 알림 토스트 표시 헬퍼
@@ -166,7 +166,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-900">
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
       
       {/* 1. 상단 네비게이션 헤더 */}
       <Header
@@ -186,11 +186,11 @@ export const App: React.FC = () => {
         onClearData={handleClearData}
       />
 
-      {/* 2. 토스트 알림 (Toast Notification) */}
+      {/* 2. 토스트 알림 */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 animate-fade-in">
-          <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 shadow-xl text-xs sm:text-sm font-bold">
-            <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+          <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-900/95 border border-brand-500/40 text-slate-100 shadow-2xl backdrop-blur-md text-xs sm:text-sm font-semibold">
+            <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
             <span>{toastMessage.text}</span>
           </div>
         </div>
@@ -201,23 +201,23 @@ export const App: React.FC = () => {
         
         {/* 상단 소개 배너 및 AI 진단 바로가기 (API Key 미등록 시 돋보이는 가이드) */}
         {!geminiConfig.apiKey && (
-          <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50/50 to-white border border-blue-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+          <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-brand-950/60 via-slate-900 to-indigo-950/60 border border-brand-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-glow-indigo">
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-brand-500 text-white flex items-center justify-center shadow-md shadow-brand-500/25 flex-shrink-0">
-                <Sparkles className="w-6 h-6 text-yellow-300" />
+              <div className="w-12 h-12 rounded-2xl bg-brand-600/20 border border-brand-500/30 flex items-center justify-center text-brand-400 flex-shrink-0">
+                <Sparkles className="w-6 h-6 text-yellow-300 animate-pulse" />
               </div>
               <div>
-                <h2 className="text-sm sm:text-base font-bold text-slate-900">
+                <h2 className="text-sm sm:text-base font-bold text-white">
                   Google Gemini 3.0 기반 AI 포트폴리오 진단 준비하기
                 </h2>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <p className="text-xs text-slate-400 mt-0.5">
                   무료 Gemini API Key를 등록하면 섹터 쏠림 분석과 분산 투자 조언을 실시간으로 받을 수 있습니다.
                 </p>
               </div>
             </div>
             <button
               onClick={() => setIsApiKeyModalOpen(true)}
-              className="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs sm:text-sm font-bold shadow-sm shadow-brand-500/25 transition-all active:scale-95 whitespace-nowrap"
+              className="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs sm:text-sm font-bold shadow-md transition-all active:scale-95 whitespace-nowrap"
             >
               API Key 1초 설정하기
             </button>
@@ -252,16 +252,16 @@ export const App: React.FC = () => {
             <CategoryBreakdown categories={categorySummaries} />
 
             {/* AI 포트폴리오 진단 추천 카드 위젯 */}
-            <div className="glass-card p-5 sm:p-6 bg-gradient-to-b from-white to-blue-50/40 border-brand-200/80 relative overflow-hidden shadow-card">
+            <div className="glass-card p-5 sm:p-6 bg-gradient-to-b from-slate-900/90 to-brand-950/40 border-brand-500/20 relative overflow-hidden">
               <div className="flex items-center gap-2.5 mb-3">
-                <div className="p-2 rounded-xl bg-brand-50 text-brand-500 border border-brand-100 shadow-sm">
-                  <Sparkles className="w-5 h-5 text-amber-500" />
+                <div className="p-2 rounded-xl bg-brand-500/20 text-brand-400">
+                  <Sparkles className="w-5 h-5 text-yellow-300" />
                 </div>
-                <h3 className="text-base font-bold text-slate-900">
+                <h3 className="text-base font-bold text-white">
                   AI 포트폴리오 상담실
                 </h3>
               </div>
-              <p className="text-xs text-slate-600 mb-4 leading-relaxed font-medium">
+              <p className="text-xs text-slate-300 mb-4 leading-relaxed">
                 현재 포트폴리오의 비중과 리스크를 구글 AI가 실시간 진단해 드립니다.
               </p>
 
@@ -271,13 +271,13 @@ export const App: React.FC = () => {
                     setAiInitialQuestion('현재 내 전체 포트폴리오의 구성과 안정성, 성장성을 종합적으로 진단하고 총평을 작성해줘.');
                     setIsAiDrawerOpen(true);
                   }}
-                  className="w-full py-2.5 px-3.5 rounded-xl bg-white hover:bg-brand-50/70 border border-slate-200 hover:border-brand-200 text-left text-xs font-bold text-slate-700 hover:text-brand-600 transition-all flex items-center justify-between group shadow-xs"
+                  className="w-full py-2.5 px-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-left text-xs font-semibold text-slate-200 hover:text-white transition-all flex items-center justify-between group"
                 >
                   <span className="flex items-center gap-2">
                     <span>🚀</span>
                     <span>종합 포트폴리오 진단</span>
                   </span>
-                  <span className="text-brand-500 group-hover:translate-x-0.5 transition-transform">→</span>
+                  <span className="text-brand-400 group-hover:translate-x-0.5 transition-transform">→</span>
                 </button>
 
                 <button
@@ -285,13 +285,13 @@ export const App: React.FC = () => {
                     setAiInitialQuestion('특정 산업이나 섹터에 자산이 과도하게 편중되어 있는지 리스크 요인을 집중 점검해줘.');
                     setIsAiDrawerOpen(true);
                   }}
-                  className="w-full py-2.5 px-3.5 rounded-xl bg-white hover:bg-brand-50/70 border border-slate-200 hover:border-brand-200 text-left text-xs font-bold text-slate-700 hover:text-brand-600 transition-all flex items-center justify-between group shadow-xs"
+                  className="w-full py-2.5 px-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-left text-xs font-semibold text-slate-200 hover:text-white transition-all flex items-center justify-between group"
                 >
                   <span className="flex items-center gap-2">
                     <span>⚖️</span>
                     <span>섹터 쏠림 및 리스크 점검</span>
                   </span>
-                  <span className="text-brand-500 group-hover:translate-x-0.5 transition-transform">→</span>
+                  <span className="text-brand-400 group-hover:translate-x-0.5 transition-transform">→</span>
                 </button>
 
                 <button
@@ -299,13 +299,13 @@ export const App: React.FC = () => {
                     setAiInitialQuestion('포트폴리오의 변동성을 낮추기 위해 향후 어떤 섹터나 자산군을 보강하면 좋을지 구체적으로 조언해줘.');
                     setIsAiDrawerOpen(true);
                   }}
-                  className="w-full py-2.5 px-3.5 rounded-xl bg-white hover:bg-brand-50/70 border border-slate-200 hover:border-brand-200 text-left text-xs font-bold text-slate-700 hover:text-brand-600 transition-all flex items-center justify-between group shadow-xs"
+                  className="w-full py-2.5 px-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-left text-xs font-semibold text-slate-200 hover:text-white transition-all flex items-center justify-between group"
                 >
                   <span className="flex items-center gap-2">
                     <span>💡</span>
                     <span>분산 투자 및 리밸런싱 조언</span>
                   </span>
-                  <span className="text-brand-500 group-hover:translate-x-0.5 transition-transform">→</span>
+                  <span className="text-brand-400 group-hover:translate-x-0.5 transition-transform">→</span>
                 </button>
               </div>
 
@@ -314,7 +314,7 @@ export const App: React.FC = () => {
                   setAiInitialQuestion(undefined);
                   setIsAiDrawerOpen(true);
                 }}
-                className="w-full mt-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold shadow-sm shadow-brand-500/25 transition-all text-center flex items-center justify-center gap-1.5 active:scale-95"
+                className="w-full mt-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-brand-500/20 transition-all text-center flex items-center justify-center gap-1.5"
               >
                 <span>AI 상담 대화창 열기</span>
               </button>
@@ -341,11 +341,11 @@ export const App: React.FC = () => {
       </main>
 
       {/* 4. 푸터 */}
-      <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-800/80 bg-slate-950 py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-brand-500" />
-            <span className="font-bold text-slate-700">주식 가계부 & AI 포트폴리오 진단</span>
+            <TrendingUp className="w-4 h-4 text-brand-400" />
+            <span className="font-bold text-slate-400">주식 가계부 & AI 포트폴리오 진단</span>
           </div>
           <p className="text-[11px] text-slate-500">
             데이터는 브라우저 LocalStorage에 안전하게 보관됩니다. (Google Gemini 3.0 Flash Preview 연동)

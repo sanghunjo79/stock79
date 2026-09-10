@@ -4,59 +4,55 @@
 
 @layer base {
   body {
-    /* 핀테크/토스 감성의 은은하고 깨끗한 쿨 그레이 배경 */
-    @apply bg-[#f8fafc] text-slate-900 antialiased font-sans;
+    /* 프리미엄 핀테크 다크 테마 배경 */
+    @apply bg-slate-950 text-slate-100 antialiased font-sans;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(49, 130, 246, 0.04) 0px, transparent 40%),
-      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 40%),
-      radial-gradient(at 50% 0%, rgba(241, 245, 249, 0.8) 0px, transparent 100%);
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.95) 0px, transparent 100%);
     background-attachment: fixed;
   }
 }
 
-/* 핀테크 스타일의 정갈하고 모던한 카드 및 입력 컴포넌트 */
+/* 프리미엄 다크 글래스모피즘 카드 및 입력 컴포넌트 */
 @layer components {
-  /* 프리미엄 화이트 카드 스타일 (White Card Style) */
   .glass-card {
-    @apply bg-white border border-slate-200/70 shadow-card rounded-2xl transition-all duration-200;
+    @apply bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 shadow-2xl rounded-2xl;
   }
 
-  /* 카드 호버 인터랙션 (Card Hover Interaction) */
   .glass-card-hover {
-    @apply hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-0.5;
+    @apply transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/95 hover:shadow-glow-indigo;
   }
 
-  /* 클린 인풋 필드 스타일 (Clean Input Field Style) */
   .glass-input {
-    @apply bg-slate-50/80 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all text-sm;
+    @apply bg-slate-950/70 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm;
   }
 
-  /* 정갈한 뱃지 스타일 (Badge Style) */
   .glass-badge {
-    @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+    @apply px-2.5 py-1 rounded-full text-xs font-semibold backdrop-blur-md;
   }
 }
 
-/* 커스텀 스크롤바 스타일 (Custom Scrollbar Style) */
+/* 다크 커스텀 스크롤바 스타일 */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: rgba(15, 23, 42, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(71, 85, 105, 0.6);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: rgba(99, 102, 241, 0.8);
 }
 
-/* 부드러운 페이드인 애니메이션 (Fade-in Animation) */
+/* 부드러운 페이드인 애니메이션 */
 @keyframes fadeIn {
   from {
     opacity: 0;
