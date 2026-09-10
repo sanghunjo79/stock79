@@ -1,0 +1,24 @@
+1. 프롬프트
+
+주식 가계부 사이트를 만들기 위한 프롬프트가 필요합니다. 어떤 분야의 주식을 언제 얼마에 샀고, 몇주 샀는지 입력하면 관리할 수 있게 해주는 사이트입니다. 포트폴리오도 표 형식으로 보여주고, 상담도 할 수 있게 해주세요. gemini-3-flash-preview 모델, api key는 사용자가 입력하게 해주세요.
+
+
+2. 처음 Git Hub에 올릴 때 쓰는 명령어
+
+git remote add origin https://github.com/사용자이름/저장소이름.git
+git remote add origin https://github.com/philosophyAIEDU/260304stock.git
+
+git branch -M main
+git push -u origin main
+
+
+3. 나중에 Git Hub에 업데이트된 코드를 올릴 때 쓰는 명령어
+ 
+# 수정된 모든 파일을 업로드할 준비를 합니다.
+git add .
+
+# 이번에 어떤 내용을 수정했는지 간단한 메모(커밋 메시지)를 남깁니다.
+git commit -m "여기에 수정 내용을 적어주세요 (예: UI 색상 변경)"
+
+# 준비된 파일들을 GitHub 저장소로 보냅니다.
+git push
